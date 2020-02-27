@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { Redirect } from 'react-router-dom';
 import "./login.scss";
 
-const Login = ({setAuth}) => {
+const Login = ({setAuth,auth}) => {
   const [dataLogin, setDataLogin] = useState({});
+
+    if(auth===true){
+       return <Redirect to="/"/>
+    }
 
   const saveDataLogin = e => {
     const { name, value } = e.target;
