@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Redirect } from 'react-router-dom';
 import "./login.scss";
+import {Context} from '../../context/AuthContext';
 
-const Login = ({setAuth,auth}) => {
+const Login = () => {
   const [dataLogin, setDataLogin] = useState({});
-
+  const { auth,setAuth } = useContext(Context)
     if(auth===true){
        return <Redirect to="/"/>
     }

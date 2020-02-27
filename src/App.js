@@ -6,20 +6,22 @@ import {
     Route,
   } from "react-router-dom";
 import Home from './components/Home';
+import AuthContext from './context/AuthContext';
 
 function App() {
-    const [auth,setAuth] = useState(false);
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/" >
-                    <Home auth={auth}/>
-                </Route>
-                <Route path="/login">
-                    <Login setAuth={setAuth} auth={auth}/>
-                </Route>
-            </Switch>
-        </Router>
+        <AuthContext>
+            <Router>
+                <Switch>
+                    <Route exact path="/" >
+                        <Home/>
+                    </Route>
+                    <Route path="/login">
+                        <Login/>
+                    </Route>
+                </Switch>
+            </Router>
+        </AuthContext>
     )
 }
 
