@@ -5,8 +5,8 @@ import {Context} from '../../context/AuthContext';
 
 const Login = () => {
   const [dataLogin, setDataLogin] = useState({});
-  const { auth,setAuth } = useContext(Context)
-    if(auth===true){
+  const { auth,setAuth } = useContext(Context);
+    if(auth){
        return <Redirect to="/"/>
     }
 
@@ -22,8 +22,11 @@ const Login = () => {
     e.preventDefault();
     const isAuth = (dataLogin.username==="matias"
         && dataLogin.password ==="123");
-    
-        setAuth(isAuth);
+    if(isAuth){
+        setAuth(dataLogin);
+        const storage = JSON.stringify(dataLogin);
+        localStorage.setItem('auth',storage);
+    }
 
   };
   return (
